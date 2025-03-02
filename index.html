@@ -41,7 +41,7 @@
                         Hyderabad, India
                     </a>
                 </div>
-                <a href="assets/resume.pdf" download class="resume-download-btn">
+                <a href="./assets/Naveen_Hemanth_Resume.pdf" download="Naveen_Hemanth_Resume.pdf" class="resume-download-btn" onclick="handleDownload(event)">
                     <i class="fas fa-download"></i>
                     Download Resume
                 </a>
@@ -263,5 +263,20 @@
             </section>
         </main>
     </div>
+    <script>
+        function handleDownload(event) {
+            const link = event.currentTarget;
+            fetch(link.href)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Resume not found');
+                    }
+                })
+                .catch(error => {
+                    event.preventDefault();
+                    alert('Resume file is being updated. Please check back later!');
+                });
+        }
+    </script>
 </body>
 </html>
